@@ -38,7 +38,7 @@ function getResult() {
         // 📌 Display Student Info
         document.getElementById("studentName").innerText = data.studentName || "Unknown";
         document.getElementById("studentIdDisplay").innerText = data.studentId;
-        document.getElementById("studentDuration").innerText = duration;
+        document.getElementById("studentDuration").innerText = duration;  // Display duration
         document.getElementById("studentLevel").innerText = data.levelType + " - " + data.level;
 
         // 📌 Skills and Max Scores
