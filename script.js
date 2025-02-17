@@ -1,4 +1,4 @@
-// 📌 Firebase Configuration (Ensure this is correctly set)
+// 📌 Firebase Configuration
 const firebaseConfig = {
     apiKey: "AIzaSyAip-SynnGF9F_QuN0jjQMUJPeb7YppSsM",
     authDomain: "tacticresults.firebaseapp.com",
