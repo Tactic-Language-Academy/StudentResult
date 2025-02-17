@@ -69,30 +69,30 @@
         <input type="text" id="studentId" placeholder="Enter Student ID">
         <button onclick="getResult()">Get Result</button>
 
-        <!-- Result Section -->
-        <div id="resultSection">
-            <h3>Result Sheet</h3>
-            <p><strong>Student Name:</strong> <span id="studentName"></span></p>
-            <p><strong>Student ID:</strong> <span id="studentIdDisplay"></span></p>
-            <p><strong>Level:</strong> <span id="studentLevel"></span></p>
-            <p><strong>Duration:</strong> <span id="studentDuration"></span></p> <!-- 📌 Added Duration Field -->
-        
-            <table>
-                <tr>
-                    <th>Skill</th>
-                    <th>Overall Score</th>
-                    <th>Your Score</th>
-                    <th>Status</th>
-                </tr>
-                <tbody id="scoreTable"></tbody>
-            </table>
-        
-            <h3>Overall Performance: <span id="overallScore"></span></h3>
-        
-            <!-- Chart Section -->
-            <h3>Score Visualization</h3>
-            <canvas id="scoreChart"></canvas>
-        </div>
+    <!-- Result Section -->
+    <div id="resultSection">
+        <h3>Result Sheet</h3>
+        <p><strong>Student Name:</strong> <span id="studentName"></span></p>
+        <p><strong>Student ID:</strong> <span id="studentIdDisplay"></span></p>
+        <p><strong>Level:</strong> <span id="studentLevel"></span></p>
+        <p><strong>Duration:</strong> <span id="studentDuration"></span></p> <!-- 📌 Added Duration Field -->
+    
+        <table>
+            <tr>
+                <th>Skill</th>
+                <th>Overall Score</th>
+                <th>Your Score</th>
+                <th>Status</th>
+            </tr>
+            <tbody id="scoreTable"></tbody>
+        </table>
+    
+        <h3>Overall Performance: <span id="overallScore"></span></h3>
+    
+        <!-- Chart Section -->
+        <h3>Score Visualization</h3>
+        <canvas id="scoreChart"></canvas>
+    </div>
 
     <!-- External Script -->
     <script defer src="script.js"></script>
