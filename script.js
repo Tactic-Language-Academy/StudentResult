@@ -1,4 +1,4 @@
-// 📌 Firebase Configuration
+// 📌 Firebase Configuration (Ensure this is correctly set)
 const firebaseConfig = {
     apiKey: "AIzaSyAip-SynnGF9F_QuN0jjQMUJPeb7YppSsM",
     authDomain: "tacticresults.firebaseapp.com",
@@ -13,6 +13,9 @@ const firebaseConfig = {
 // 📌 Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
+
+// 📌 Chart.js Reference (Global)
+let scoreChart;
 
 // 📌 Fetch Student Result Based on Entered ID
 function getResult() {
@@ -35,7 +38,7 @@ function getResult() {
         document.getElementById("studentIdDisplay").innerText = data.studentId;
         document.getElementById("studentLevel").innerText = data.levelType + " - " + data.level;
 
-        // 📌 Populate Score Table
+        // 📌 Skills and Max Scores
         const skills = ["Speaking", "Listening", "Reading", "Writing", "Homework", "Objective", "Punctuality"];
         const overallScores = [14, 14, 14, 14, 20, 20, 4]; // Max scores per category
         let scoreTable = document.getElementById("scoreTable");
@@ -43,6 +46,7 @@ function getResult() {
 
         let totalScore = 0;
         let maxScore = 0;
+        let studentScores = [];
 
         for (let i = 0; i < skills.length; i++) {
             let userScore = data.scores[i] || 0;
@@ -63,6 +67,9 @@ function getResult() {
             `;
             scoreTable.innerHTML += row;
 
+            // 📌 Store Scores for Chart
+            studentScores.push(userScore);
+
             // 📌 Calculate Total
             totalScore += userScore;
             maxScore += maxPossible;
@@ -73,8 +80,51 @@ function getResult() {
 
         // 📌 Show the Result Section
         document.getElementById("resultSection").style.display = "block";
+
+        // 📌 Draw Chart
+        drawChart(skills, studentScores, overallScores);
+
     }).catch(error => {
         console.error("❌ Error fetching result:", error);
         alert("❌ Error fetching result: " + error.message);
+    });
+}
+
+// 📌 Function to Draw Bar Chart
+function drawChart(skills, studentScores, overallScores) {
+    let ctx = document.getElementById("scoreChart").getContext("2d");
+
+    // 📌 Destroy existing chart if it exists
+    if (scoreChart) {
+        scoreChart.destroy();
+    }
+
+    // 📌 Create New Chart
+    scoreChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: skills,
+            datasets: [
+                {
+                    label: "Your Score",
+                    data: studentScores,
+                    backgroundColor: "rgba(54, 162, 235, 0.6)"
+                },
+                {
+                    label: "Max Score",
+                    data: overallScores,
+                    backgroundColor: "rgba(255, 99, 132, 0.6)"
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: Math.max(...overallScores) + 5
+                }
+            }
+        }
     });
 }
