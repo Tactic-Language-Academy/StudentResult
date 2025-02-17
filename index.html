@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Checker</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script defer src="script.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; }
+        .container { width: 50%; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px #ccc; }
+        input, button { width: 90%; margin: 10px; padding: 10px; border-radius: 5px; border: 1px solid #ddd; }
+        button { background-color: #28a745; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        #resultSection { display: none; text-align: left; margin-top: 20px; }
+        .passed { color: green; font-weight: bold; }
+        .failed { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Check Your Result</h2>
+        <input type="text" id="studentId" placeholder="Enter Student ID">
+        <button onclick="getResult()">Get Result</button>
+
+        <!-- Result Section -->
+        <div id="resultSection">
+            <h3>Result Sheet</h3>
+            <p><strong>Student Name:</strong> <span id="studentName"></span></p>
+            <p><strong>Student ID:</strong> <span id="studentIdDisplay"></span></p>
+            <p><strong>Level:</strong> <span id="studentLevel"></span></p>
+
+            <table border="1" width="100%">
+                <tr>
+                    <th>Skill</th>
+                    <th>Overall Score</th>
+                    <th>Your Score</th>
+                    <th>Status</th>
+                </tr>
+                <tbody id="scoreTable"></tbody>
+            </table>
+
+            <h3>Overall Performance: <span id="overallScore"></span></h3>
+        </div>
+    </div>
+
+</body>
+</html>
