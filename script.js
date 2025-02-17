@@ -20,8 +20,10 @@ let scoreChart;
 // 📌 Fetch Student Result Based on Entered ID
 function getResult() {
     let studentId = document.getElementById("studentId").value.trim();
-    if (studentId === "") {
-        alert("Please enter a valid student ID.");
+    let duration = document.getElementById("duration").value.trim();
+
+    if (studentId === "" || duration === "") {
+        alert("Please enter a valid student ID and duration.");
         return;
     }
 
@@ -36,8 +38,8 @@ function getResult() {
         // 📌 Display Student Info
         document.getElementById("studentName").innerText = data.studentName || "Unknown";
         document.getElementById("studentIdDisplay").innerText = data.studentId;
+        document.getElementById("studentDuration").innerText = duration;
         document.getElementById("studentLevel").innerText = data.levelType + " - " + data.level;
-        document.getElementById("studentDuration").innerText = data.duration || "Not Provided"; // 📌 Display Duration
 
         // 📌 Skills and Max Scores
         const skills = ["Speaking", "Listening", "Reading", "Writing", "Homework", "Objective", "Punctuality"];
